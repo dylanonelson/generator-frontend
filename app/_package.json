@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --colors --progress",
+    "start": "webpack-dev-server",
+    "watch": "webpack --colors --progress --watch"
+  },
+  "author": "Dylan Nelson",
+  "license": "ISC"
+}

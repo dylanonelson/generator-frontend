@@ -1,0 +1,5 @@
+.*.s[w-z]?
+.s[w-z]?
+node_modules/
+dist/*bundle*
+builds/

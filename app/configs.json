@@ -1,0 +1,7 @@
+[
+  ".babelrc",
+  ".editorconfig",
+  ".eslintrc.js",
+  ".gitignore",
+  "webpack.config.js"
+]
