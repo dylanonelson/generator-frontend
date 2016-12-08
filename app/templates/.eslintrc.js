@@ -4,6 +4,7 @@ module.exports = {
   },
   'extends': ['eslint:recommended', 'plugin:react/recommended'],
   'installedESLint': true,
+  'parser': 'babel-eslint',
   'parserOptions': {
     'ecmaFeatures': {
       'jsx': true
