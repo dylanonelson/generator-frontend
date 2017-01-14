@@ -18,6 +18,6 @@ module.exports = {
   ],
   'rules': {
     'no-unused-vars': [2, { 'args': 'none' }],
-    'comma-dangle': [2, 'always'],
+    'comma-dangle': [2, 'always-multiline'],
   }
 };
