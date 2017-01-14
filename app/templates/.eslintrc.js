@@ -16,5 +16,7 @@ module.exports = {
     'react'
   ],
   'rules': {
+    'no-unused-vars': [2, { 'args': 'none' }],
+    'comma-dangle': [2, 'always'],
   }
 };
