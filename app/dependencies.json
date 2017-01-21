@@ -14,5 +14,6 @@
   "react-dom",
   "style-loader",
   "webpack",
-  "webpack-dev-server"
+  "webpack-dev-server",
+  "ws"
 ]

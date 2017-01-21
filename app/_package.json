@@ -3,8 +3,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --colors --progress",
-    "start": "webpack-dev-server",
-    "watch": "webpack --colors --progress --watch"
+    "build:prd": "NODE_ENV=production npm run build",
+    "serve": "ws -d dist -p 1104",
+    "watch": "webpack --colors --progress --watch",
+    "dev": "npm run watch & npm run serve"
   },
   "author": "Dylan Nelson",
   "license": "ISC"
