@@ -10,21 +10,27 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.js',
   module: {
-    loaders: [{
-      test: /\.js$/,
+    rules: [{
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      test: /\.js$/,
+      use: ['babel-loader'],
     },{
       test: /\.css$/,
-      loader: 'style!css'
+      use: [
+        'style-loader',
+        'css-loader',
+      ],
+    }, {
+      enforce: 'pre',
+      include: /src/,
+      use: [{
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
+      }],
+      test: /\.js?$/,
     }],
-    preLoaders: [
-      {
-        test: /\.js?$/,
-        loader: 'eslint?{fix:true}',
-        include: /src/,
-      }
-    ]
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -38,6 +44,9 @@ module.exports = {
     }),
   ],
   resolve: {
-    root: path.resolve('./src')
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ],
   }
 }
