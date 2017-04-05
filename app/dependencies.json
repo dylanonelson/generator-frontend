@@ -15,5 +15,5 @@
   "style-loader",
   "webpack",
   "webpack-dev-server",
-  "ws"
+  "local-web-server"
 ]
