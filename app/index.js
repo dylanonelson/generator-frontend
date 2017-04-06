@@ -26,7 +26,7 @@ var generator = generators.Base.extend({
       return path.join(this.destinationPath(), name);
     }.bind(this);
 
-    
+
     for (var i = 0; i < directories.length; i++) {
       mkdirp(getFolderPath(directories[i]));
       this.log(chalk.green('   folder') + ' ' + directories[i]);
@@ -50,12 +50,12 @@ var generator = generators.Base.extend({
 
     this.fs.copy(
       this.templatePath('index.html'),
-      this.destinationPath('dist/index.html')
+      this.destinationPath('src/index.html')
     );
   },
 
   dependencies: function() {
-    this.npmInstall(dependencies, { 'save': true });
+    this.npmInstall(dependencies, { 'save-dev': true });
   },
 
 });

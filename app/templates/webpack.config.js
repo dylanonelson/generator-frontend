@@ -21,6 +21,14 @@ module.exports = {
         'css-loader',
       ],
     }, {
+      test: /\.html/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[name].html',
+        },
+      }],
+    }, {
       enforce: 'pre',
       include: /src/,
       use: [{

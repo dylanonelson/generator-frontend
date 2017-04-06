@@ -10,6 +10,7 @@
   "eslint",
   "eslint-loader",
   "eslint-plugin-react",
+  "file-loader",
   "react",
   "react-dom",
   "style-loader",
