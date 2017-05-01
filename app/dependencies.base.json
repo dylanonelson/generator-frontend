@@ -1,0 +1,18 @@
+{
+  "babel-core": true,
+  "babel-eslint": true,
+  "babel-loader": true,
+  "babel-plugin-transform-decorators-legacy": true,
+  "babel-preset-latest": true,
+  "babel-preset-react": true,
+  "css-loader": true,
+  "eslint": true,
+  "eslint-loader": true,
+  "eslint-plugin-react": true,
+  "file-loader": true,
+  "react": true,
+  "react-dom": true,
+  "style-loader": true,
+  "webpack": true,
+  "webpack-dev-server": true
+}

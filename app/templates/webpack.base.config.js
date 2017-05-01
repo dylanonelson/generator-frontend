@@ -8,11 +8,13 @@ module.exports = {
     port: 1104
   },
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+  },
   module: {
     rules: [{
       exclude: /node_modules/,
-      test: /\.js$/,
+      test: /\.jsx?$/,
       use: ['babel-loader'],
     },{
       test: /\.css$/,
@@ -42,7 +44,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   plugins: [
     new webpack.DefinePlugin({

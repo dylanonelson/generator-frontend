@@ -3,5 +3,5 @@
   ".editorconfig",
   ".eslintrc.js",
   ".gitignore",
-  "webpack.config.js"
+  "webpack.base.config.js"
 ]

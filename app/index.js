@@ -3,25 +3,45 @@ var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 var path = require('path');
 
-var dependencies = require('./dependencies');
 var directories = require('./directories');
 var configs = require('./configs');
-var package = require('./_package');
+var _package = require('./_package');
+var projectTypes = require('./projectTypes');
+var typeConfigNames = projectTypes.values().map(t => t.configName);
 
-var generator = generators.Base.extend({
+class Generator extends generators.Base {
 
-  init: function() {
+  constructor(...args) {
+    super(...args);
+
+    this.option('type', {
+      type: String,
+      default: projectTypes.UI.configName,
+    });
+
+    this.option('name', {
+      type: String,
+      default: path.basename(this.destinationPath()),
+    });
+  }
+
+  init() {
     if (!this.fs.exists(this.destinationPath('package.json'))) {
-      package.name = path.basename(this.destinationPath());
+      _package.name = this.option.name;
 
       this.fs.writeJSON(
         this.destinationPath('package.json'),
-        package
+        _package
       );
     }
-  },
+  }
 
-  directories: function() {
+  checkInputs() {
+    if (!typeConfigNames.includes(this.options.type))
+        throw new Error(`Type ${this.options.type} is not a valid project type. Choose from ${typeConfigNames}`);
+  }
+
+  directories() {
     var getFolderPath = function getFolderPath(name) {
       return path.join(this.destinationPath(), name);
     }.bind(this);
@@ -31,18 +51,28 @@ var generator = generators.Base.extend({
       mkdirp(getFolderPath(directories[i]));
       this.log(chalk.green('   folder') + ' ' + directories[i]);
     }
-  },
+  }
 
-  configs: function() {
+  configs() {
     for (var i = 0; i < configs.length; i++) {
       this.fs.copy(
         this.templatePath(configs[i]),
         this.destinationPath(configs[i])
       );
     }
-  },
+  }
 
-  files: function() {
+  webpackConfig() {
+    var webpackBaseName = `webpack.${this.options.type}.config.js`;
+
+    this.fs.copyTpl(
+      this.templatePath(webpackBaseName),
+      this.destinationPath('webpack.config.js'),
+      { project_name: this.options.name }
+    );
+  }
+
+  files() {
     this.fs.copy(
       this.templatePath('index.js'),
       this.destinationPath('src/index.js')
@@ -52,12 +82,13 @@ var generator = generators.Base.extend({
       this.templatePath('index.html'),
       this.destinationPath('src/index.html')
     );
-  },
+  }
 
-  dependencies: function() {
+  dependencies() {
+    var dependencies = require(`./dependencies.${this.options.type}`);
     this.npmInstall(dependencies, { 'save-dev': true });
-  },
+  }
 
-});
+};
 
-module.exports = generator;
+module.exports = Generator;
