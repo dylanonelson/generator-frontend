@@ -1,0 +1,7 @@
+{
+  ".babelrc": true,
+  ".editorconfig": true,
+  ".eslintrc.base.js": true,
+  ".gitignore": true,
+  "webpack.base.config.js": true
+}

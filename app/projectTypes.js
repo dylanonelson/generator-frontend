@@ -10,5 +10,6 @@ class ProjectType {
 
 module.exports = createEnum(
   defineConstant('UI'),
-  defineConstant('UMD')
+  defineConstant('UMD'),
+  defineConstant('EXT')
 )(ProjectType);
