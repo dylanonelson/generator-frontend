@@ -10,6 +10,7 @@
   "eslint-loader": true,
   "eslint-plugin-react": true,
   "file-loader": true,
+  "prop-types": true,
   "react": true,
   "react-dom": true,
   "style-loader": true,
