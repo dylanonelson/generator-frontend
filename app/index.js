@@ -12,7 +12,7 @@ class Generator extends generators.Base {
   constructor(...args) {
     super(...args);
 
-    this.option('type', {
+    this.argument('type', {
       type: String,
       default: projectTypes.UI.configName,
     });
@@ -24,7 +24,7 @@ class Generator extends generators.Base {
   }
 
   customizePackageJSON() {
-    var scripts = require(`./scripts/scripts.${this.options.type}`);
+    var scripts = require(`./scripts/scripts.${this.type}`);
 
     _package.name = this.option.name;
     _package.scripts = scripts;
@@ -36,12 +36,12 @@ class Generator extends generators.Base {
   }
 
   checkInputs() {
-    if (!typeConfigNames.includes(this.options.type))
-        throw new Error(`Type ${this.options.type} is not a valid project type. Choose from ${typeConfigNames}`);
+    if (!typeConfigNames.includes(this.type))
+        throw new Error(`Type ${this.type} is not a valid project type. Choose from ${typeConfigNames}`);
   }
 
   directories() {
-    var directories = require(`./directories/directories.${this.options.type}`);
+    var directories = require(`./directories/directories.${this.type}`);
 
     var getFolderPath = function getFolderPath(name) {
       return path.join(this.destinationPath(), name);
@@ -55,7 +55,7 @@ class Generator extends generators.Base {
   }
 
   configs() {
-    var configs = require(`./configs/configs.${this.options.type}`);
+    var configs = require(`./configs/configs.${this.type}`);
 
     for (var i = 0; i < configs.length; i++) {
       this.fs.copy(
@@ -66,7 +66,7 @@ class Generator extends generators.Base {
   }
 
   eslintConfig() {
-    var eslintBaseName = `.eslintrc.${this.options.type}.js`;
+    var eslintBaseName = `.eslintrc.${this.type}.js`;
 
     this.fs.copy(
       this.templatePath(eslintBaseName),
@@ -75,7 +75,7 @@ class Generator extends generators.Base {
   }
 
   webpackConfig() {
-    var webpackBaseName = `webpack.${this.options.type}.config.js`;
+    var webpackBaseName = `webpack.${this.type}.config.js`;
 
     this.fs.copyTpl(
       this.templatePath(webpackBaseName),
@@ -85,7 +85,7 @@ class Generator extends generators.Base {
   }
 
   files() {
-    if (this.options.type === projectTypes.EXT.configName) {
+    if (this.type === projectTypes.EXT.configName) {
       return this._extFiles();
     }
 
@@ -100,7 +100,7 @@ class Generator extends generators.Base {
       { script_src: './index.bundle.js' }
     );
 
-    if (this.options.type === projectTypes.UMD.configName) {
+    if (this.type === projectTypes.UMD.configName) {
       this.fs.copyTpl(
         this.templatePath('index.html'),
         this.destinationPath('test/src/index.html'),
@@ -164,7 +164,7 @@ class Generator extends generators.Base {
   }
 
   dependencies() {
-    var dependencies = require(`./dependencies/dependencies.${this.options.type}`);
+    var dependencies = require(`./dependencies/dependencies.${this.type}`);
     this.npmInstall(dependencies, { 'save-dev': true });
   }
 
