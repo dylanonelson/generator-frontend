@@ -4,6 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devServer: {
     contentBase: 'dist',
+    historyApiFallback: true,
     inline: true,
     port: 1104
   },
