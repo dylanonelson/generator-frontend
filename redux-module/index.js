@@ -1,12 +1,6 @@
+var fs = require('fs');
 var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
-
-var files = [
-  'actions.js',
-  'index.js',
-  'middleware.js',
-  'reducer.js',
-];
 
 class Generator extends generators.Base {
 
@@ -18,6 +12,8 @@ class Generator extends generators.Base {
 
   generate() {
     var tp, dp, filename, opts;
+    var files = fs.readdirSync(this.templatePath());
+
     opts = { moduleName: this.moduleName };
 
     mkdirp('src/redux-modules/' + this.moduleName);
