@@ -1,8 +1,8 @@
 import React from 'react';
-import store from '../state';
+import store from 'redux-store';
 import { Provider } from 'react-redux';
 
-import App from './app';
+import { App } from 'connected-components';
 
 const root = () => (
   <Provider store={store}>

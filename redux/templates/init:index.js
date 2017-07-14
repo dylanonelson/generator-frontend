@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from '../views';
+import root from './root-component';
 
 const renderApp = () => {
   ReactDOM.render(
-    React.createElement(App),
+    React.createElement(root),
     document.getElementById('root')
   );
 }

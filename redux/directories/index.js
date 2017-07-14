@@ -1,8 +1,8 @@
 const directories = {
   'src/init': true,
-  'src/modules': true,
-  'src/state/root': true,
-  'src/views/app': true,
+  'src/redux-modules': true,
+  'src/redux-store/root': true,
+  'src/connected-components/app': true,
 };
 
 module.exports = Object.keys(directories).filter(k => directories[k]);

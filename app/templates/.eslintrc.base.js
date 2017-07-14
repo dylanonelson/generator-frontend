@@ -19,5 +19,6 @@ module.exports = {
   'rules': {
     'no-unused-vars': [2, { 'args': 'none' }],
     'comma-dangle': [2, 'always-multiline'],
+    'sort-keys': [2, 'asc', { caseSensitive: true }],
   }
 };

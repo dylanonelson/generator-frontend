@@ -20,12 +20,12 @@ class Generator extends generators.Base {
     var tp, dp, filename, opts;
     opts = { moduleName: this.moduleName };
 
-    mkdirp('src/modules/' + this.moduleName);
+    mkdirp('src/redux-modules/' + this.moduleName);
 
     for (var i = 0; i < files.length; i++) {
       filename = files[i];
       tp = this.templatePath(filename);
-      dp = this.destinationPath(`src/modules/${this.moduleName}/${filename}`);
+      dp = this.destinationPath(`src/redux-modules/${this.moduleName}/${filename}`);
       this.fs.copyTpl(tp, dp, opts);
     }
   }
