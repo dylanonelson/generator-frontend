@@ -14,7 +14,7 @@ class Generator extends generators.Base {
 
     this.argument('filePath', {
       description: 'Subfolder inside `src`',
-      default: 'view-component'
+      default: 'view-components'
     });
   }
 
