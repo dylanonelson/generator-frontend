@@ -18,6 +18,9 @@ class Generator extends generators.Base {
       desc: `Type of component to generate. Options are ${ComponentTypes.values().map(v => v.id).join(' | ')}`,
       default: ComponentTypes.VIEW.id,
     });
+
+    if (!ComponentTypes.values().map(v => v.id).includes(this.compType))
+      throw new Error(`${this.compType} is not a valid component type. Run yo frontend:react-component --help for the available types.`);
   }
 
   generate() {
