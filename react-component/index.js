@@ -2,25 +2,27 @@ var fs = require('fs');
 var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 
+var ComponentTypes = require('./componentTypes');
+
 class Generator extends generators.Base {
 
   constructor(...args) {
     super(...args);
 
     this.argument('moduleName', {
-      description: 'Component name, in spinal case',
+      desc: 'Component name, in spinal case',
       required: true
     });
 
-    this.argument('filePath', {
-      description: 'Subfolder inside `src`',
-      default: 'view-components'
+    this.argument('compType', {
+      desc: `Type of component to generate. Options are ${ComponentTypes.values().map(v => v.id).join(' | ')}`,
+      default: ComponentTypes.VIEW.id,
     });
   }
 
   generate() {
     var tp, dp, filename, opts;
-    var files = fs.readdirSync(this.templatePath());
+    var type = ComponentTypes.values().find(v => v.id === this.compType);
 
     var moduleNameCamel = this.moduleName.split('-').map((l) => (
       l[0].toUpperCase() + l.slice(1, l.length)
@@ -28,19 +30,21 @@ class Generator extends generators.Base {
 
     opts = { moduleName: moduleNameCamel };
 
-    mkdirp(`src/${this.filePath}/${this.moduleName}`);
+    mkdirp(`src/${type.dirname}/${this.moduleName}`);
 
-    for (var i = 0; i < files.length; i++) {
-      filename = files[i];
+    tp = this.templatePath(type.tplname);
 
-      tp = this.templatePath(filename);
+    filename = `${moduleNameCamel}.jsx`;
 
-      if (filename === 'Component.jsx') filename = `${moduleNameCamel}.jsx`;
+    dp = this.destinationPath(`src/${type.dirname}/${this.moduleName}/${filename}`);
 
-      dp = this.destinationPath(`src/${this.filePath}/${this.moduleName}/${filename}`);
+    this.fs.copyTpl(tp, dp, opts);
 
-      this.fs.copyTpl(tp, dp, opts);
-    }
+    this.fs.copyTpl(
+      this.templatePath('index.js'),
+      this.destinationPath(`src/${type.dirname}/${this.moduleName}/index.js`),
+      opts,
+    );
   }
 
 };
