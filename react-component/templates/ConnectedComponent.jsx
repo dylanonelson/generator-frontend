@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const <%= moduleName %> = (props) => {
   const {} = props;
 
-  return ();
+  return (<div><%= moduleName %></div>);
 };
 
 <%= moduleName %>.propTypes = {};

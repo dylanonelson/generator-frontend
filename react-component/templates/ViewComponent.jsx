@@ -7,7 +7,9 @@ import styles from './styles.css';
 const <%= moduleName %> = (props) => {
   const {} = props;
 
-  return ();
+  return (
+    <div><%= moduleName %></div>
+  );
 };
 
 <%= moduleName %>.propTypes = {};
