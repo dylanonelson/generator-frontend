@@ -43,6 +43,12 @@ class Generator extends generators.Base {
 
     this.fs.copyTpl(tp, dp, opts);
 
+    if (type === ComponentTypes.VIEW)
+      this.fs.write(
+        this.destinationPath(`src/${type.dirname}/${this.moduleName}/styles.css`),
+        ''
+      );
+
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath(`src/${type.dirname}/${this.moduleName}/index.js`),
