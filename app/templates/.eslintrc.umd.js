@@ -1,5 +1,5 @@
 var config = require('./.eslintrc.base.js');
 
-config.mocha = true;
+config.env.mocha = true;
 
 module.exports = config;
