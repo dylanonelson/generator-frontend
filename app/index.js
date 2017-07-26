@@ -102,9 +102,8 @@ class Generator extends generators.Base {
 
     if (this.type === projectTypes.UMD.configName) {
       this.fs.copyTpl(
-        this.templatePath('index.html'),
+        this.templatePath('test:src:index.html'),
         this.destinationPath('test/src/index.html'),
-        { script_src: './test.bundle.js' }
       );
 
       this.fs.copy(
