@@ -13,4 +13,4 @@ export {
   selectors,
 };
 
-export default middleware;
+export default reducer;
