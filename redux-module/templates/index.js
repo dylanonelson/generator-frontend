@@ -1,7 +1,7 @@
 import * as actions from './actions';
-import middleware from './middleware';
+import saga from './saga';
 import reducer from './reducer';
 
-export { actions, middleware };
+export { actions, saga };
 
 export default reducer;
