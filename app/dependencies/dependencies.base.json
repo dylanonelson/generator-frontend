@@ -3,7 +3,7 @@
   "babel-eslint": true,
   "babel-loader": true,
   "babel-plugin-transform-decorators-legacy": true,
-  "babel-preset-latest": true,
+  "babel-preset-env": true,
   "babel-preset-react": true,
   "css-loader": true,
   "eslint": true,

@@ -128,7 +128,13 @@ class Generator extends generators.Base {
     // Empty content script
     this.fs.write(
       this.destinationPath('src/content/index.js'),
-      ''
+      'import iframe from \'./iframe.ejs\';'
+    );
+
+    // Iframe template
+    this.fs.copy(
+      this.templatePath('iframe.ejs'),
+      this.destinationPath('src/content/iframe.ejs'),
     );
 
     // Empty background script
