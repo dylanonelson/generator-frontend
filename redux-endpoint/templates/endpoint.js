@@ -7,8 +7,8 @@ const endpoint = createEndpoint({
       .then(resp => resp.json())
       .then(json => resolve(json));
   }),
-  resolver: () => '';
-  url: '',
+  resolver: (id) => id,
+  url: '/:id',
 });
 
 export default endpoint;
