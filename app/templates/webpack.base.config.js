@@ -45,7 +45,7 @@ module.exports = {
           fix: true,
         },
       }],
-      test: /\.js?$/,
+      test: /\.jsx?$/,
     }],
   },
   output: {
