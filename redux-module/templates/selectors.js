@@ -1,1 +1,1 @@
-export <%= moduleName %>Selector = state => state.<%= moduleName %>;
+export const <%= moduleName %>Selector = state => state.<%= moduleName %>;
