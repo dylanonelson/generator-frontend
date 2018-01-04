@@ -1,3 +1,1 @@
-import <%= moduleName %> from './<%= moduleName %>.jsx';
-
-export default <%= moduleName %>;
+export { default } from './<%= moduleName %>.jsx';
