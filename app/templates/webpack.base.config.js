@@ -12,6 +12,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
   },
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   module: {
     rules: [{
       exclude: /node_modules/,
