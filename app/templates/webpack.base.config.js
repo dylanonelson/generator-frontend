@@ -1,5 +1,18 @@
-var path = require('path');
-var webpack = require('webpack');
+const AnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path');
+const webpack = require('webpack');
+
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    },
+  }),
+];
+
+if (process.env.ANALYZE_BUNDLE === 'true') {
+  plugins.push(new AnalyzerPlugin());
+}
 
 module.exports = {
   devServer: {
@@ -53,17 +66,11 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      },
-    }),
-  ],
+  plugins,
   resolve: {
     modules: [
       path.join(__dirname, 'src'),
       'node_modules'
     ],
   }
-}
+};
