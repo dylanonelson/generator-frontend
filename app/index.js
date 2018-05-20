@@ -170,7 +170,7 @@ class Generator extends generators.Base {
 
   dependencies() {
     var dependencies = require(`./dependencies/dependencies.${this.type}`);
-    this.npmInstall(dependencies, { 'save-dev': true });
+    this.npmInstall(dependencies, { 'save': true });
   }
 
 };

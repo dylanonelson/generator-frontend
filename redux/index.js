@@ -29,7 +29,7 @@ class Generator extends generators.Base {
   }
 
   installReduxDependencies() {
-    this.npmInstall(dependencies, { 'save-dev': true });
+    this.npmInstall(dependencies, { 'save': true });
   }
 
 };
