@@ -15,5 +15,7 @@
   "react-dom": true,
   "style-loader": true,
   "webpack": true,
+  "webpack-bundle-analyzer": true,
+  "webpack-cli": true,
   "webpack-dev-server": true
 }
