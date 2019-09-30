@@ -14,6 +14,8 @@ if (process.env.ANALYZE_BUNDLE === 'true') {
   plugins.push(new AnalyzerPlugin());
 }
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   devServer: {
     contentBase: 'dist',
@@ -25,7 +27,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
   },
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: isProduction ? 'production' : 'development',
   module: {
     rules: [{
       exclude: /node_modules/,
@@ -56,6 +58,7 @@ module.exports = {
       use: [{
         loader: 'eslint-loader',
         options: {
+          ...(!isProduction && { emitWarning: true }),
           fix: true,
         },
       }],

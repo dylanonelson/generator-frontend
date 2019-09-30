@@ -1,10 +1,10 @@
 {
-  "babel-core": true,
+  "@babel/core": true,
+  "@babel/preset-env": true,
+  "@babel/preset-react": true,
   "babel-eslint": true,
   "babel-loader": true,
   "babel-plugin-transform-decorators-legacy": true,
-  "babel-preset-env": true,
-  "babel-preset-react": true,
   "css-loader": true,
   "eslint": true,
   "eslint-loader": true,
