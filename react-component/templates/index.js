@@ -1,1 +1,1 @@
-export { default } from './<%= moduleName %>.jsx';
+export { default } from './<%= moduleName %>.js';

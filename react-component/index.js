@@ -37,7 +37,7 @@ class Generator extends generators.Base {
 
     tp = this.templatePath(type.tplname);
 
-    filename = `${moduleNameCamel}.jsx`;
+    filename = `${moduleNameCamel}.js`;
 
     dp = this.destinationPath(`src/${type.dirname}/${this.moduleName}/${filename}`);
 

@@ -22,6 +22,6 @@ class ComponentType {
 }
 
 module.exports = createEnum(
-  defineConstant('VIEW', 'ViewComponent.jsx', 'view-components'),
-  defineConstant('CONNECTED', 'ConnectedComponent.jsx', 'connected-components'),
+  defineConstant('VIEW', 'ViewComponent.js', 'view-components'),
+  defineConstant('CONNECTED', 'ConnectedComponent.js', 'connected-components'),
 )(ComponentType);

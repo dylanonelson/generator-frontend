@@ -1,5 +1,5 @@
 const files = {
-  'connected-components:app:App.jsx': true,
+  'connected-components:app:App.js': true,
   'connected-components:app:index.js': true,
   'connected-components:index.js': true,
   'index.js': true,
